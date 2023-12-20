@@ -1,0 +1,620 @@
+#include<iostream>
+#include<ctime>
+#include<cstdlib>
+#include<stdlib.h>
+#include<cmath>
+using namespace std;
+
+//Array
+
+//int main() {
+	/*const int n = 10;
+	int mark[n] = {};
+	srand(time(NULL));
+
+
+	for (int i = 0; i < n; i++) {
+		mark[i] = -12 + rand() % 11;
+		cout << mark[i] << "\t";
+	}
+	cout << " \nList of integers: " << n;
+
+	return 0;*/
+
+	// Sum , count , avarage of array
+	//Task 2
+
+	/*double numbers[] = {8,9,10.7,20.5,31};
+	numbers[3] = 20;
+	double sum = 0;
+	double count = 0;
+	double avarage;
+	srand(time(NULL));
+	cout << " The numbers are: ";
+
+	for (const double &n : numbers) {
+		cout << n  << " ";
+
+		sum += n;
+		count++;
+	}
+	avarage = sum / count;
+
+	cout << "\n Sum of elements: " << sum;
+	cout << "\n Avarage of elements: " << avarage;*/
+
+	// Task 1; //Lab 4
+	/*int a;
+	cout << " Enter numbers: ";
+	cin >> a;
+
+	int digits_sum = 0;
+
+	while (a>0) {
+		int digit = a % 10;
+
+		digits_sum += digit;
+
+		a = a / 10;
+
+	}
+
+	cout << " Sum of digits: " << digits_sum;*/
+
+	// Task 1
+
+	/*const int size = 5;
+	int numbers[size];
+	double sum = 0;
+	int count = 0;
+
+
+	for (int i = 0; i < 5; i++) {
+		cout << " Enter 5 numbers: ";
+		cin >> numbers[i];
+
+		if (numbers[i] % 2 == 0) {
+			sum += numbers[i];
+
+			count++;
+		}
+
+	}
+
+	cout << " The sum of even integers: " << sum;
+	cout << " The number of even integers: " << count;
+	cout << " The avarage of even integers: " << sum/count;*/
+
+
+	/*const int size = 5;
+	double numbers[size];
+	double max = numbers[0];
+
+	for (int i = 0; i < 5; i++) {
+		cout << " Enter 5 integers: ";
+		cin >> numbers[i];
+
+		if (numbers[i] > max) {
+			max = numbers[i];
+		}
+
+	}
+
+	cout << " The largest num: " << max;*/
+
+	/*const int size = 5;
+	int numbers[size];
+
+	
+
+	for (int i = 0; i < 5; i++) {
+		cout << " Enter 5 integers: ";
+		cin >> numbers[i];
+
+	}
+
+	for (int i = 0; i < 5; i++) {
+		if (numbers[i + 1] > numbers[i]) {
+			cout << " Elements are in increasing order";
+			break;
+		}
+		else {
+			cout << " Elemets are not in increasing order";
+			break;
+		}
+
+	}*/
+
+	/*const int size = 5;
+	int numbers[size];
+	double sum = 0.0;
+	int count = 0;
+	
+
+	for (int i = 0; i < size; i++) {
+		cout << " Enter 5 integers: ";
+		cin >> numbers[i];
+
+		sum += numbers[i];
+
+		count++;
+
+	}
+
+	double avarage = sum/count;
+
+	cout << " The sum : " << sum;
+	cout << " \nThe avarage: " << avarage;
+
+	
+	for (int i = 0; i < size; i++) {
+	
+
+		if (numbers[i] < avarage) {
+			
+			count--;
+		}
+
+	}
+
+	cout << "\n" << count << " Numbers are greater than " << avarage;*/
+
+	
+
+	/*const int size = 10;
+	double numbers[size];
+	//int n = sizeof(numbers) / sizeof(numbers[0]);
+	double sum = 0.0;
+	int count = 0;
+
+	cout << " Please Enter 10 person's salaries: " << "\n";
+
+	for (int i = 0; i < size; i++) {
+
+
+		cout << "Person " << i+1 << " : ";
+		cin >> numbers[i];
+
+		sum += numbers[i];
+		count++;
+
+	}
+
+	double avarage = sum / count;
+	double max = numbers[0];
+	double min = numbers[0];
+	int count_low = 0;
+	int count_high = 0;
+
+	for (int i = 0; i < size; i++) {
+
+		if (numbers[i] > max) {
+
+			max = numbers[i];
+			
+		}
+
+		if (numbers[i] < min) {
+
+			min = numbers[i];
+			
+		}
+
+	}
+
+	cout << "\nThe highest salary: " << max;
+	cout << "\nThe lowest salary: " << min;;
+	cout << "\nAvarage: " << avarage;
+
+	cout << "\n\n";
+	cout << "_________________";
+	 
+
+	cout << "\n List of person with salaries are greater than " << avarage << " : ";
+
+	for (int i = 0; i < size; i++) {
+
+		
+		if (avarage < numbers[i]) {
+
+			cout << " \nPerson " << i+1 << " : " << numbers[i];
+
+		}
+
+
+	}
+
+	cout << "\n\n";
+	cout << " __________________________ ";
+
+	for (int i = 0; i < size; i++) {
+
+		if (numbers[i] == max) {
+
+			count_high++;
+			cout << "\n Gets Highest Salary: " << " \nPerson " << i + 1;
+			
+		}
+
+		if (numbers[i] == min) {
+
+			count_low++;
+			cout << "\n Gets lowest salary: " << " \nPerson " << i + 1;
+		}
+
+	}
+
+
+	cout << " \nNumber of persons with high salaries " << "(" << count_high << ")";
+	cout << " \nNumber of persons with low salaries " << "(" << count_low << ")";*/
+
+	/*int array_size;
+	cout << "Enter the size: ";
+	cin >> array_size;
+
+	int count = 0;
+
+	int a, b;
+	cout << " Enter the range: ";
+	cin >> a >> b;
+	
+	
+	cout << " Numbers from the range [" << a << "," << b << "]" << "\n";
+
+	if (array_size > 0) {
+
+		int* arrayName = new int[array_size];
+		srand(time(NULL));
+
+		for (int i = 0; i < array_size; i++) {
+
+			arrayName[i] = a + rand() % b;
+			cout << " " << arrayName[i];
+
+		}
+
+		cout << " \n";
+
+		for (int i = 0; i < array_size; i++) {
+
+			if (arrayName[i] % 2 != 0) {
+				cout << " " << arrayName[i];
+				count++;
+			}
+
+		}
+		delete[]arrayName;
+		cout << " There are " << count << " odd numbers.";
+
+	}*/
+	
+	/*int array_size;
+	cout << " Enter the size of an array: ";
+	cin >> array_size;
+
+	int a, b;
+	cout << " Enter the range of an array: ";
+	cin >> a >> b;
+
+	cout << " \nNumber from the range [" << a << "," << b << "]";
+	cout << "\n";
+
+	if (array_size > 0) {
+
+		int* arrayName = new int[array_size];
+		srand(time(NULL));
+
+		for (int i = 0; i < array_size; i++) {
+
+			arrayName[i] = a + rand() % b;
+			cout << " " << arrayName[i];
+
+		}
+		cout << "\n";
+
+		for (int i = 0; i < array_size; i++) {
+
+			if (arrayName[i] % 2 != 0) {
+				cout << " First odd number is " << arrayName[i] << " , and located in the index " << i;
+				break;
+			}
+
+		}
+		delete[]arrayName;
+
+	}*/
+
+	/*int array_size;
+	cout << " Enter the size of an array: ";
+	cin >> array_size;
+
+	int a, b;
+	cout << " Enter the range of an array: ";
+	cin >> a >> b;
+
+	if (array_size > 0) {
+
+		int* arrayName = new int[array_size];
+		srand(time(NULL));
+		for (int i = 0; i < array_size; i++) {
+
+			arrayName[i] = a + rand() % b;
+			cout << " " << arrayName[i];
+
+		}
+
+		cout << "\n";
+
+		int max = arrayName[0];
+
+		for (int i = 0; i < array_size; i++) {
+
+			if (arrayName[i] % 2 != 0) {
+				if (arrayName[i] > max) {
+					max = arrayName[i];
+					cout << " The last odd number is " << max << " and located in the index " << i;
+					
+				}
+			}
+		}
+		delete[]arrayName;
+		
+
+	}*/
+
+	/*int array_size;
+	cout << " Enter the size of an array: ";
+	cin >> array_size;
+
+	int a, b;
+	cout << " Enter the range of an array: ";
+	cin >> a >> b;
+
+	cout << " \nRandom numbers of the range [" << a << "," << b << "]" << "\n";
+
+	if (array_size > 0) {
+		int* arrayName = new int[array_size];
+		srand(time(NULL));
+		for (int i = 0; i < array_size; i++) {
+			arrayName[i] = a + rand() % b;
+			cout << " " << arrayName[i];
+		}
+
+		cout << "\n";
+
+		for (int i = 0; i < array_size; i++) {
+			
+			if (arrayName[i] == arrayName[i + 1]) {
+				cout << " Number " << arrayName[i] << " recurs and first occurrence is at index " << i;
+				break;
+			}
+		}
+		delete[]arrayName;
+	}*/
+
+//Function Task 1
+	/*double hypotenuse(double side1, double side2) {
+		return sqrt((side1 * side1) + (side2 * side2));
+	}
+	void displayNum() {
+		cout << "Hypotenus is: ";
+	}
+
+	int main() {
+		
+		double side1,side2;
+		cout << " Enter the side of triangle: ";
+		cin >> side1 >> side2;
+
+		
+		double hypotenus = hypotenuse(side1 ,side2);
+		displayNum();
+		cout << hypotenus << endl;
+		return 0;
+
+	}*/
+
+	/*int gcd(int num1, int num2) {
+		int gcd = 1;
+		for (int i = 1; i <= min(num1,num2); i++) {
+			if (num1 % i == 0 && num2 % i == 0) {
+				gcd = i;
+	
+			}
+		}
+		return gcd;
+	}
+
+	int lcm(int n1, int n2) {
+		int lcm = (n1 * n2) / gcd(n1, n2);
+		return lcm;
+	}
+
+	int main() {
+		int num1, num2;
+		cout << " Enter two numbers: ";
+		cin >> num1 >> num2;
+
+		int gcdValue = gcd(num1, num2);
+		int lcmValue = lcm(num1, num2);
+
+		cout << " GCD IS: " << gcdValue;
+		cout << "\nLCM IS: " << lcmValue;
+		return 0;
+
+	}*/
+
+	//Task 3
+	/*double circumference(double num1, double num2, double num3) {
+		double p = num1 + num2 + num3;
+		return p;
+	}
+
+	double area(double num1, double num2, double num3) {
+		double s = (num1 + num2 + num3) / 2;
+		double area = sqrt(s * (s - num1) * (s - num2) * (s - num3));
+		return area;
+	}
+	
+	int main() {
+		double num1, num2, num3;
+		cout << " Enter three side of an triangle: ";
+		cin >> num1 >> num2 >> num3;
+
+		double circum = circumference(num1, num2, num3);
+		double Area = area(num1, num2, num3);
+
+		cout << " Circumference of triangle: " << circum;
+		cout << "\nArea of triangle: " << Area;
+
+		return 0;
+	}*/
+
+	//Task 4
+/*void print_pyramid(int height) {
+	for (int i = 1; i <= height; i++) {
+		
+		for (int j = 1; j <= height - i; j++) {
+			cout << "   ";
+		}
+
+		// Print stars
+		for (int j = 1; j <= 2 * i; j++) {
+			cout << " * ";
+		}
+
+		// Move to the next line after each row
+		cout << endl;
+	}
+}
+
+int main() {
+	int height;
+	cout << "Enter the height of the pyramid: ";
+	cin >> height;
+
+	print_pyramid(height);
+
+	return 0;
+}*/
+
+
+	/*void prime_number(int n) {
+		int count = 0;
+		if (n > 0) {
+			for (int i = 1; i <= n; i++) {
+				if (n % i == 0) {
+					count++;
+				}
+			}
+		}
+
+		if (count == 2) {
+			cout << "Number is Prime.";
+		}
+		else {
+			cout << "Number is non-Prime.";
+		}
+
+	}
+	
+
+	int main() {
+		int number;
+		char answer;
+		do {
+
+			cout << "Enter the number: ";
+			cin >> number;
+
+			prime_number(number);
+
+			cout << "\nDo you want to Continue?(Y|N)";
+			cin >> answer;
+
+		} while (answer == 'Y' || answer == 'y');
+
+		return 0;
+	
+	}*/
+	//T = (n)(n + 1) / 2
+
+ // Pointer and reference // Function + arrays //Swap ;
+	//int x = 20;
+	//int *x = &x;
+	//int &x = x;
+
+
+/*void display_array(int* first, int how_many);
+int count_positive(int* first, int how_many);
+
+int main()
+{
+	const int length = 10;
+	int arr[length]{ 2,3,4,-3,-4,-5,8,7,9,-10 };
+	display_array(arr, length);
+	int result = count_positive(arr, length);
+	if (result > 0)
+		cout << "\nNumber of positive values is " << result << endl;
+	else
+		cout << "\nNo positive values in the array\n";
+	return 0;
+}
+
+void display_array(int* first, int how_many)
+{
+	for (int i = 0; i < how_many; ++i)
+		cout << first[i] << "\t";
+}
+
+int count_positive(int* first, int how_many)
+{
+	int counter = 0;
+	for (int i = 0; i < how_many; ++i)
+		if (first[i] > 0)
+			++counter;
+	return counter;*/
+
+	/*void read_array(int first[], int how_many) {
+		for (int i = 0; i < how_many; i++) {
+			cout << first[i] << " ";
+		}
+	}
+
+	int count_odd(int first[], int how_many) {
+		int count = 0;
+		for (int i = 0; i < how_many; i++) {
+			if (first[i] % 2 != 0) {
+				count++;
+			}
+		}
+		return count;
+		
+	}
+
+	double sum_odd(int first[], int how_many) {
+		int sum = 0;
+		for (int i = 0; i < how_many; i++) {
+			if (first[i] % 2 != 0) {
+				sum += first[i];
+			}
+		}
+		return sum;
+	}*/
+
+	/*int main() {
+		const int size = 10;
+		int array[size] = { -2,-4,8,9,7,5,4,2,1,0 };
+
+		double avarage = sum_odd(array, size) / count_odd(array, size);
+
+		read_array(array,size);
+		cout << "\n The avarage of odd: " << avarage;
+		cout << "\n How many odd number: " << count_odd(array, size);
+		cout << "\n The sum of odd: " << sum_odd(array, size);
+
+	}*/
+
+	
+
+
