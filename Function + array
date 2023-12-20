@@ -4,6 +4,12 @@
 
 using namespace std;
 
+void display_array(int first[], int size) {
+    for (int i = 0; i < size; i++) {
+        cout << first[i] << " ";
+    }
+}
+
 void random_array(int first[], int size, int p, int q) {
     srand(time(NULL));
     for (int i = 0; i < size; i++) {
@@ -34,16 +40,12 @@ int main() {
     random_array(arrayName, size,p,q);
 
     cout << "Original Array: ";
-    for (int i = 0; i < size; i++) {
-        cout << arrayName[i] << " ";
-    }
+    display_array(arrayName, size);
 
     abs_array(arrayName, size);
 
     cout << "\nNegative to positive: ";
-    for (int i = 0; i < size; i++) {
-        cout << arrayName[i] << " ";
-    }
+    display_array(arrayName, size);
 
     delete[] arrayName; // Free the allocated memory
     return 0;
