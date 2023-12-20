@@ -1,0 +1,50 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+void random_array(int first[], int size, int p, int q) {
+    srand(time(NULL));
+    for (int i = 0; i < size; i++) {
+        first[i] = p + rand() % q;
+    }
+}
+
+void abs_array(int first[], int size) {
+    for (int i = 0; i < size; i++) {
+        if (first[i] < 0) {
+            first[i] *= -1;
+        }
+    }
+}
+
+int main() {
+    int size;
+    cout << "Enter the size: ";
+    cin >> size;
+
+    int p, q;
+    cout << "\nEnter p,q: ";
+    cin >> p >> q;
+
+    int* arrayName = new int[size];
+
+    cout << "Array: \n";
+    random_array(arrayName, size,p,q);
+
+    cout << "Original Array: ";
+    for (int i = 0; i < size; i++) {
+        cout << arrayName[i] << " ";
+    }
+
+    abs_array(arrayName, size);
+
+    cout << "\nNegative to positive: ";
+    for (int i = 0; i < size; i++) {
+        cout << arrayName[i] << " ";
+    }
+
+    delete[] arrayName; // Free the allocated memory
+    return 0;
+}
