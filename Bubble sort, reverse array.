@@ -1,0 +1,64 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+void display_array(int * array, int size) {
+	for (int i = 0; i < size; i++) {
+		cout << array[i] << " ";
+	}
+}
+
+void random_array(int * array, int size) {
+	srand(time(NULL));
+	for (int i = 0; i < size; i++) {
+		array[i] = -5 + rand() % 11;
+	}
+}
+
+void swap_integers(int &a, int &b) {
+	int temp = a;
+	a = b;
+	b = temp;
+}
+
+void bubbleSort(int arr[], int n)
+{
+	bool swapped;
+	for (int i = 0; i < n - 1; i++) {
+		swapped = false;
+		for (int j = 0; j < n - i - 1; j++) {
+			if (arr[j] > arr[j + 1]) {
+				swap_integers(arr[j], arr[j + 1]);
+				swapped = true;
+			}
+		}
+		if (swapped == false)
+			break;
+	}
+	
+}
+
+int main() {
+	int size;
+	cout << "Enter the size: ";
+	cin >> size;
+	int* arrayName = new int[size];
+
+	random_array(arrayName, size);
+	cout << "\nThe original array is: ";
+	display_array(arrayName, size);
+	
+	for (int i = 0, j = size - 1; i < j; i++, j--) {
+		swap_integers(arrayName[i], arrayName[j]);
+	}
+	cout << "\nReversed array is: ";
+	display_array(arrayName, size);
+
+	bubbleSort(arrayName, size);
+	cout << "\nBubble sort: ";
+	display_array(arrayName, size);
+	
+	delete[] arrayName;
+	
+}
