@@ -1,0 +1,67 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+
+void display_array(int* array, int size) {
+    for (int i = 0; i < size; i++) {
+        cout << array[i] << " ";
+    }
+}
+
+void winLotto(int* array, int size, int n) {
+    srand(time(NULL));
+    for (int i = 0; i < size; i++) {
+        array[i] = 0 + rand() % (2 * n - 1);
+    }
+}
+
+int matchCounter(int* lottery, int* user, int size) {
+    int matches = 0;
+    for (int count = 0; count < size; count++) {
+        if (lottery[count] == user[count]) {
+            matches++;
+        }
+    }
+    if (matches == size) {
+        cout << "\nYou've won the lottery!! Congratulations!!";
+    }
+    
+    return matches;
+
+}
+
+void enterNumbers(int* user, int size) {
+    cout << "\nEnter your numbers:\n";
+    for (int i = 0; i < size; i++) {
+        cout << "Number " << i + 1 << ": ";
+        cin >> user[i];
+    }
+}
+
+int main() {
+    int size = 10;
+    int* lotto = new int[size];
+    int* userNumbers = new int[size];
+    int n;
+
+    cout << "Enter the range for the lotto numbers: ";
+    cin >> n;
+
+    winLotto(lotto, size, n);
+    cout << "Lotto Winning Numbers are: ";
+    display_array(lotto, size);
+
+    enterNumbers(userNumbers, size);
+    cout << "Test your luck: ";
+    display_array(userNumbers, size);
+
+    int matches = matchCounter(lotto, userNumbers, size);
+    cout << "\nMatching numbers: " << matches << "\n";
+
+    delete[] lotto;
+    delete[] userNumbers;
+
+    return 0;
+}
