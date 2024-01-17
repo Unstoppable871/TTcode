@@ -1,0 +1,32 @@
+	int a, b;
+	cout << "Enter the range: ";
+	cin >> a >> b;
+	cout << "\n";
+	
+
+	const int rows = 3;
+	const int columns = 4;
+	int sumcolumns[columns] = { 0 };
+	int sumrows[rows] = { 0 };
+	int arr[rows][columns];
+	srand(time(NULL));
+
+
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < columns; j++) {
+			arr[i][j] = a + rand() % (b-a+1);
+			cout << arr[i][j] << " ";
+			sumrows[i] += arr[i][j];
+			sumcolumns[j] += arr[i][j];
+		}
+		cout << endl;
+	}
+	cout << "\nSum of rows: ";
+	for (int i = 0; i < rows; i++) {
+		cout << sumrows[i] << " ";
+	}
+
+	cout << "\n Sum of columns: ";
+	for (int j = 0; j < columns; j++) {
+		cout << sumcolumns[j] << " ";
+	}
