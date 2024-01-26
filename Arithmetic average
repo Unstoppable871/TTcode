@@ -1,0 +1,43 @@
+double arithmetic_average(int* arr, int size, int a, int b) {
+    double sum = 0;
+    int count = 0;
+
+    for (int i = 0; i < size; i++) {
+        arr[i] = rand() % 10 + 1;  
+        cout << arr[i] << " ";
+
+        if (arr[i] < a || arr[i] > b) {
+            sum += arr[i];
+            count++;
+        }
+    }
+
+    if (count > 0) {
+        return sum / count;
+    }
+    else
+        return 0;
+    
+}
+
+int main() {
+    int size = 10;
+    int* array = new int[size];
+
+    int a, b;
+    cout << "Enter the range: ";
+    cin >> a >> b;
+
+    double average = arithmetic_average(array, size, a, b);
+
+    if (average != 0) {
+        cout << "\nArithmetic average of values not in [" << a << ", " << b << "]: " << average << endl;
+    }
+    else {
+        cout << "\nNo values outside the interval [" << a << ", " << b << "] found in the array.\n";
+    }
+
+    delete[] array;
+
+    return 0;
+}
