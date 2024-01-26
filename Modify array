@@ -1,4 +1,16 @@
-int find_integer(int* arr, int n, int x) {
+void generate_array(int* arr, int n, int p, int q) {
+    for (int i = 0; i < n; i++) {
+        arr[i] = p + rand() % q;
+    }
+}
+
+void display_array(int* arr, int n) {
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+}
+
+void find_integer(int* arr, int n, int x) {
     int count = 0;
     for (int i = 0; i < n; i++) {
         if (arr[i] == x) {
@@ -9,29 +21,28 @@ int find_integer(int* arr, int n, int x) {
     if (count > 0) {
         arr[0] = x;
     }
+
     else
         arr[0] = -1;
-    return count;
+
 }
 
 int main() {
     int size = 10;
-    int* arrayName = new int[size];
+    int* array = new int[size];
 
     int x;
     cout << " Enter x: ";
     cin >> x;
 
-    generate_array(arrayName, size, 1, 10);
-    cout << "Generated array: ";
-    display_array(arrayName, size);
+    generate_array(array, size, 1, 10);
+    cout << " Generated array: ";
+    display_array(array, size);
+    
 
-    int find = find_integer(arrayName, size, x);
-    cout << find;
+    find_integer(array, size, x);
     cout << "\nModified array: ";
-    display_array(arrayName, size);
+    display_array(array, size);
     
-    
-    delete[] arrayName;
-    
+    delete[]array;
 }
