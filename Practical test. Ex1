@@ -1,0 +1,87 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
+using namespace std;
+
+double formula(double x) {
+    double y = 0;
+    if (x > 3) {
+        y = (x + 2) / (x - 3);
+    }
+    else
+        y = (sqrt(2)*x) + 2;;
+
+    return y;
+}
+
+void large(double y,double y1) {
+    if (y > y1) {
+        cout << "Value " << y1 << " is smaller than " << y;
+    }
+    else if (y1 > y) {
+        cout << "Value " << y << " is smaller than " << y1;
+    }
+}
+
+
+double summ(double y, double y1) {
+
+    double sum = 0;
+    if (y > 0) {
+        sum += y;
+    }
+    if (y1 > 0) {
+        sum += y1;
+    }
+    return sum;
+
+}
+
+
+
+
+int main()
+{
+    int n;
+    cout << "Enter calculation times: ";
+    cin >> n;
+
+    while (n < 0) {
+        cout << "N cant be negative. Enter again: ";
+        cin >> n;
+    }
+
+    double totalSum = 0;
+    int count = 0;
+
+    while (count < n) {
+        double x1, x2;
+        cout << "\nEnter num: ";
+        cin >> x1 >> x2;
+
+        if (x1 == x2) {
+            cout << "Both inputs are the same. Stopping the program.\n";
+            break;
+        }
+
+        double form = formula(x1);
+        double form2 = formula(x2);
+
+        cout << " For x = " << x1 << " Y = " << form;
+        cout << " For x = " << x2 << " Y = " << form2;
+
+        cout << "\n";
+        large(form, form2);
+
+
+        cout << "\n";
+        double sum = summ(form, form2);
+        cout << " Sum of y that has positive value: " << sum;
+
+        totalSum += sum;
+        count++;
+    }
+    cout << "\nTotal sum of y that has positive value: " << totalSum;
+    
+}
