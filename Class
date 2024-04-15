@@ -1,0 +1,118 @@
+#include <iostream>
+using namespace std;
+#include <vector>
+#include <algorithm>
+#include <stdexcept>
+
+class Box {
+private:
+	double lenght;
+	double height;
+	double width;
+	string content;
+	static int noOfBoxes;
+
+public:
+	Box(double _lenght, double _height, double _width) :
+		lenght(_lenght),
+		height(_height),
+		width(_width),
+		content("")
+	{noOfBoxes++;}
+
+
+	double getCapacity() {
+		return lenght * height * width;
+	}
+
+	void setContents(string _content,double volume) {
+		if (volume <= getCapacity()) {
+			content = _content;
+		}
+		else {
+			throw runtime_error("Too big!!!");
+		}
+	}
+
+	string getContents() const {
+		if (content.empty()) {
+			throw runtime_error("EmptyError");
+		}
+		else
+			return content;
+	}
+
+	static int countAll() {
+		return noOfBoxes;
+	}
+
+	bool isEmpty() const {
+		return content.empty();
+	}
+
+	
+};
+
+int Box::noOfBoxes = 0;
+
+class ColouredBox : public Box {
+private:
+	string colour;
+public:
+	ColouredBox(double _lenght, double _height, double _width,const string&  _colour)
+		: Box(_lenght, _width, _height), colour(_colour)
+	{}
+
+	string getColour()const {
+		if (colour.empty()) {
+			throw runtime_error("&");
+		}
+		else {
+			return colour;
+		}
+	}
+
+	void setColour(string& _colour){
+		colour = _colour;
+	}	
+};
+
+class WeightedBox : public Box {
+private:
+	double weight;
+public:
+	WeightedBox(double _lenght,double _height,double _width,const double& _weight)
+		: Box(_lenght,_width,_height), weight(_weight)
+	{}
+
+	double getWeight() const {
+		return weight;
+	}
+
+	void setWeight(double _weight,string _content,double _volume) {
+		if (_volume <= getCapacity()) {
+			weight = _weight;
+		}
+		else
+			throw runtime_error("Weight is too big!.");
+	}
+};
+
+int main()
+{
+	Box b(2.5, 3.5, 5.5);
+	b.setContents("Book", 20);
+	cout << Box::countAll << endl;
+	ColouredBox cb(2.5, 3.5, 5.5, "red");
+	WeightedBox wb(2.5, 3.5, 5.5, 8.0);
+
+	cout << "Contents of the box: " << b.getContents() << endl;
+	cout << "Colour of the box: " << cb.getColour() << endl;
+	cout << "Weight of the box: " << wb.getWeight() << endl;
+
+	cout << "Is the box empty? " << (b.isEmpty() ? "Yes" : "No") << endl;
+	
+	cout << "Capacity of the box: " << b.getCapacity() << endl;
+
+	return 0;
+}
