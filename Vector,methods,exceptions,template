@@ -1,0 +1,140 @@
+#include <iostream>
+#include <vector>
+#include <stdexcept>
+using namespace std;
+
+template<typename T>
+class Vector {
+private:
+	vector <T> data;
+public:
+	Vector(initializer_list<T> init) : data(init)
+	{}
+
+	const T& operator[](size_t index) const {
+		return data[index];
+	}
+
+
+	T& front() {
+		if (data.empty()) {
+			throw out_of_range("Vector is empty");
+		}
+		else
+			return data.front();
+	}
+
+
+	T& back() {
+		if (data.empty()) {
+			throw out_of_range("Vector is empty");
+		}
+		else
+			return data.back();
+	}
+
+	size_t capacity() const {
+		return data.capacity();
+	}
+
+	T pop_back() {
+		if (data.empty()) {
+			throw out_of_range("Vector is empty");
+		}
+		T lastElement = data.back();
+		data.pop_back();
+		return lastElement;
+	}
+
+	size_t size() {
+		return data.size();
+	}
+	
+	bool empty() {
+		return data.empty();
+	}
+
+	void clear() {
+		return data.clear();
+	}
+
+	bool contains(const T& x) const {
+		for (const T& element : data) {
+			if (element == x)
+				return true;
+		}
+		return false;
+		
+	}
+
+	T sum() const {
+		if (data.empty()) {
+			throw out_of_range("Vec is empty");
+		}
+
+		T result = T();
+		for (const T& element : data) {
+			result += element;
+		}
+		return result;
+	}
+	
+	T avarage() const {
+		if (data.empty()) {
+			throw out_of_range("Error");
+		}
+
+		T totalSum = sum();
+		
+		return totalSum/data.size();
+	}
+	
+
+};
+
+int main() {
+	Vector<int> v = {1,2,3,4,5};
+	int x;
+	cin >> x;
+
+	cout << "First element of vector: " << v.front() << endl;
+	cout << "Last element of vector: " << v.back() << endl;
+	cout << "Capacity: " << v.capacity() << endl;
+	cout << "Size: " << v.size() << endl;
+	cout << "Contains: " << (v.contains(x) ? "Yes" : "No") << endl;
+	cout << "Sum: " << v.sum() << endl;
+	
+	v.front() = 15;
+	v.back() = 20;
+
+	try {
+		int poppedElement = v.pop_back();
+		cout << "Popped element: " << poppedElement << endl;
+		int sumResult = v.sum();
+		cout << "Sum: " << sumResult << endl;
+		int avarageR = v.avarage();
+		cout << "Avarage: " << avarageR << endl;
+	}
+	catch (const out_of_range& e) {
+		cerr << "Exception: " << e.what() << endl;
+	}
+
+	cout << endl;
+
+	cout << "After modification first element: " << v.front() << endl;
+	cout << "After modification last element: " << v.back() << endl;
+	cout << "Capacity: " << v.capacity() << endl;
+	cout << "Size: " << v.size() << endl;
+	cout << "Is vector empty? " << (v.empty() ? "Yes" : "No") << endl;
+	cout << "Contains: " << (v.contains(x) ? "Yes" : "No") << endl;
+	cout << "Avarage: " << v.avarage() << endl;
+
+	v.clear();
+	cout << endl;
+
+	cout << "Size after clearing the vector " << v.size() << endl;
+	cout << "Is vector empty? " << (v.empty() ? "Yes" : "No") << endl;
+	
+
+	return 0;
+}
