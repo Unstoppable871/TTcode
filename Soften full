@@ -1,0 +1,52 @@
+import json
+from bs4 import BeautifulSoup
+import pandas as pd
+import unittest
+from cnst import cnst
+
+# Task 1: Forecast JSON
+def task1_forecast():
+    with open('forecast.json', 'r') as file:
+        data = json.load(file)
+    target_time = "2024-06-10T04:00"
+    if target_time in data['hourly']['time']:
+        index = data['hourly']['time'].index(target_time)
+        temperature = data['hourly']['temperature_2m'][index]
+        print(f"The temperature at {target_time} is {temperature}°C")
+    else:
+        print(f"Time {target_time} not found in the data.")
+
+# Task 2: Phases of Software Engineering HTML
+def task2_phases():
+    with open('phases_soften.html', 'r') as file:
+        soup = BeautifulSoup(file, 'html.parser')
+    phase_titles = ["Deployment", "Development", "Monitoring", "Testing"]
+    phases = soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
+    for idx, title in enumerate(phases):
+        phase_title = phase_titles[idx]
+        first_paragraph = title.find_next('p').text
+        print(f"Phase {idx+1}: {phase_title}\n{first_paragraph}\n")
+
+# Task 3: COVID-19 Data CSV
+def task3_covid():
+    df = pd.read_csv('covid_19_clean.csv')
+    df_june1 = df[df['Date'] == '2020-06-01']
+    total_deaths = df_june1['Deaths'].sum()
+    print(f"Total number of deaths on June 1, 2020: {total_deaths}")
+    mean_confirmed = df_june1['Confirmed'].mean()
+    western_pacific_countries = df_june1[(df_june1['WHO Region'] == 'Western Pacific') & (df_june1['Confirmed'] > mean_confirmed)]
+    print("Western Pacific countries with confirmed cases above the mean:")
+    print(western_pacific_countries['Country/Region'].tolist())
+
+# Task 4: Unit Test for cnst.py
+class TestBuiltins(unittest.TestCase):
+    def test_cnst(self):
+        test_values = [0, 1, -1, 100, -100, 12345, -12345]
+        for value in test_values:
+            self.assertEqual(cnst(value), value, f"Failed for input {value}")
+
+if __name__ == '__main__':
+    task1_forecast()
+    task2_phases()
+    task3_covid()
+    unittest.main()
