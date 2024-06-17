@@ -1,0 +1,74 @@
+import json
+
+# Load the JSON data from file
+with open('forecast.json', 'r') as file:
+    data = json.load(file)
+
+# Target time
+target_time = "2024-06-10T04:00"
+
+# Find the index of the target time
+if target_time in data['hourly']['time']:
+    index = data['hourly']['time'].index(target_time)
+    temperature = data['hourly']['temperature_2m'][index]
+    print(f"The temperature at {target_time} is {temperature}°C")
+else:
+    print(f"Time {target_time} not found in the data.")
+
+//Task 2
+from bs4 import BeautifulSoup
+
+# Load the HTML data from file
+with open('phases_soften.html', 'r') as file:
+    soup = BeautifulSoup(file, 'html.parser')
+
+# List of phase titles
+phase_titles = ["Deployment", "Development", "Monitoring", "Testing"]
+
+# Find all titles and first paragraphs
+phases = soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
+for idx, title in enumerate(phases):
+    phase_title = phase_titles[idx]
+    first_paragraph = title.find_next('p').text
+    print(f"Phase {idx+1}: {phase_title}\n{first_paragraph}\n")
+
+//Task 3
+import pandas as pd
+
+# Load the CSV data from file
+df = pd.read_csv('covid_19_clean.csv')
+
+# Filter data for June 1, 2020
+df_june1 = df[df['Date'] == '2020-06-01']
+
+# Calculate total deaths
+total_deaths = df_june1['Deaths'].sum()
+print(f"Total number of deaths on June 1, 2020: {total_deaths}")
+
+# Calculate mean of confirmed cases
+mean_confirmed = df_june1['Confirmed'].mean()
+
+# Filter Western Pacific countries with confirmed cases above the mean
+western_pacific_countries = df_june1[(df_june1['WHO Region'] == 'Western Pacific') & (df_june1['Confirmed'] > mean_confirmed)]
+
+# Display the countries
+print("Western Pacific countries with confirmed cases above the mean:")
+print(western_pacific_countries['Country/Region'].tolist())
+
+//Task 4
+import unittest
+from cnst import cnst
+
+class TestBuiltins(unittest.TestCase):
+    
+    def test_cnst(self):
+        test_values = [0, 1, -1, 100, -100, 12345, -12345]
+        for value in test_values:
+            self.assertEqual(cnst(value), value, f"Failed for input {value}")
+
+if __name__ == '__main__':
+    unittest.main()
+
+
+
+python -m unittest <name_of_your_test_file>.py
